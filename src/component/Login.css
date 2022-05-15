@@ -1,0 +1,20 @@
+.login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.box {
+    display: flex;
+    height: 100px;
+    flex-direction: column;
+    width: 300px;
+    justify-content: space-evenly;
+    text-align: center;
+}
+
+span {
+    color: red;
+}
