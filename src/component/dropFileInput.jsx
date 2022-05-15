@@ -8,7 +8,7 @@ import uploadImg from "../assets/cloud-upload-regular-240.png";
 
 const DropFileInput = (props) => {
   const [image, setImage] = useState({ preview: "", raw: "" });
-  const [image1, setImage1] = useState({ preview1: "", raw1: "" });
+  //const [image1, setImage1] = useState({ preview1: "", raw1: "" });
 
 
   const handleChange = (e) => {
@@ -20,14 +20,14 @@ const DropFileInput = (props) => {
     }
   };
 
-  const handleChangeNew = (e) => {
-    if (e.target.files.length) {
-      setImage1({
-        preview1: URL.createObjectURL(e.target.files[0]),
-        raw1: e.target.files[0],
-      });
-    }
-  };
+  // const handleChangeNew = (e) => {
+  //   if (e.target.files.length) {
+  //     setImage1({
+  //       preview1: URL.createObjectURL(e.target.files[0]),
+  //       raw1: e.target.files[0],
+  //     });
+  //   }
+  // };
 
   //   const handleUpload = async (e) => {
   //     e.preventDefault();
@@ -45,7 +45,7 @@ const DropFileInput = (props) => {
 
   const wrapperRef = useRef(null);
   console.log(image);
-  console.log(image1);
+  // console.log(image1);
 
 
   //const [fileList, setFileList] = useState([]);
@@ -88,7 +88,7 @@ const DropFileInput = (props) => {
                 <h5 className="text-center">Upload your photo</h5>
               </>
             )} */}
-            <img src={image.preview} width="200" height="200" />
+           {setImage ? <img src={image.preview} width="200" height="200" /> : null }
           </label>
           <input
             type="file"
@@ -107,20 +107,20 @@ const DropFileInput = (props) => {
         onDragLeave={onDragLeave}
         onDrop={onDrop}
       >
-        <div className="drop-file-input__label">
-          <img src={uploadImg} alt="" />
+        <button className="drop-file-input__label">
+          {/* <img src={uploadImg} alt="" /> */}
           <p>Drag & Drop your files here</p>
-        </div>
+        </button>
         <input type="file" value="" onChange={handleChange} />
       </div>
-      <div
+      {/* <div
         ref={wrapperRef}
         onDragEnter={onDragEnter}
         onDragLeave={onDragLeave}
         onDrop={onDrop}
       >
         <input type="file" value="" onClick={handleChangeNew}/>
-      </div>
+      </div> */}
     </>
   );
 };
