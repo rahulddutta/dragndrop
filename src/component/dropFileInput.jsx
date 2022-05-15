@@ -8,7 +8,7 @@ import uploadImg from "../assets/cloud-upload-regular-240.png";
 
 const DropFileInput = (props) => {
   const [image, setImage] = useState({ preview: "", raw: "" });
-  //const [image1, setImage1] = useState({ preview1: "", raw1: "" });
+ // const [image1, setImage1] = useState({ preview1: "", raw1: "" });
 
 
   const handleChange = (e) => {
