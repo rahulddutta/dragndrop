@@ -1,13 +1,22 @@
-import logo from "./logo.svg";
+import { useEffect } from "react";
+import { useState } from "react";
 import "./App.css";
-import Login from "./component/Login";
-import DropFileInput from './component/dropFileInput';
 
 
 function App() {
-  // const onFileChange = (image) => {
-  //   console.log(image);
-  // }
+
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')
+    .then((response) => response.json())
+    .then((data) =>{
+      console.log(data)
+      setPosts(data)
+    }).catch((err) => {
+      console.log(err.message)
+    })
+  },[])
 
 
   return (
@@ -15,9 +24,15 @@ function App() {
       <h2 className="header">
         React drop files input
       </h2>
-      <DropFileInput
-        //onFileChange={(image) => onFileChange(image)}
-      />
+      {posts.map((post) =>{
+        return (
+          <div className="post-card" key={post.id}>
+            <h4>{post.title}</h4>
+            <p>{post.body}</p>
+          </div>
+        )
+      })}
+      
     </div>
   );
 }
